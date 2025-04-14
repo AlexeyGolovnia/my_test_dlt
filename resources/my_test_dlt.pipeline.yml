@@ -1,0 +1,14 @@
+# The main pipeline for my_test_dlt
+resources:
+  pipelines:
+    my_test_dlt_pipeline:
+      name: my_test_dlt_pipeline
+      catalog: my_workspace
+      schema: my_test_dlt_${bundle.target}
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../src/dlt_pipeline.ipynb
+
+      configuration:
+        bundle.sourcePath: ${workspace.file_path}/src
